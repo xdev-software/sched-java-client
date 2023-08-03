@@ -2,7 +2,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/sched-java-client/checkBuild.yml?branch=develop)](https://github.com/xdev-software/sched-java-client/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_sched-java-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_sched-java-client)
 
-# <img src="https://sched.com/landing/images/brand/logo/sched-avatar.svg" height="22" /> [sched](https://sched.com/)-java-client
+# <img src="https://i0.wp.com/sched.com/wp-content/uploads/2021/11/cropped-favicon.png?fit=32,32&ssl=1" height="32" /> [sched](https://sched.com/)-java-client
 Java client for the [Sched API](https://sched.com/api)
 
 This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``](./openapi/openapi.yml) using [OpenAPI Generator](https://openapi-generator.tech/).
