@@ -315,14 +315,14 @@ paths:
         '200':
           description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
           content:
-            text/html:
-              schema:
-                type: string
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Session'
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/session/export:
     get:
@@ -378,14 +378,14 @@ paths:
         '200':
           description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
           content:
-            text/html:
-              schema:
-                type: string
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/ExportSession'
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/user/list:
     get:
@@ -410,14 +410,14 @@ paths:
         '200':
           description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
           content:
-            text/html:
-              schema:
-                type: string
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/user/add:
     post:
@@ -533,12 +533,12 @@ paths:
         '200':
           description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
           content:
-            text/html:
-              schema:
-                type: string
             application/json:
               schema:
                 $ref: '#/components/schemas/UserAdded'
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/role/add:
     get:
