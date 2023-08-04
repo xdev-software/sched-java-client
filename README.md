@@ -7,7 +7,7 @@ Java client for the [Sched API](https://sched.com/api)
 
 > **Note**
 > A API-Key is required for using the API.<br/>
-> You can get a key - if you have a payed plan - at https://yourconference.sched.com/editor/exports/api (this [video](https://youtu.be/jus5fNC1eYg?t=81) may also be helpful)
+> You can get a key - if you have a payed plan - at https://insertYourConferenceHERE.sched.com/editor/exports/api
 
 This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``](./openapi/openapi.yml) using [OpenAPI Generator](https://openapi-generator.tech/).
 
@@ -50,10 +50,8 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
   * Delete ✔️
   * Export
 
-
-¹ User Session Key
+¹ Handles `User Session Key`
 </details>
-
 
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/sched-java-client/releases/latest#Installation)
