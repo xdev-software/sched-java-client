@@ -5,9 +5,9 @@
 # <img src="https://i0.wp.com/sched.com/wp-content/uploads/2021/11/cropped-favicon.png?fit=28,28&ssl=1" height="28" /> [sched](https://sched.com/)-java-client
 Java client for the [Sched API](https://sched.com/api)
 
-> [!NOTE]
-> Note that an API Key is required for the API.
-> You can get a key - if you have a payed plan - at https://insertyourconference.sched.com/editor/exports/api (this [video](https://youtu.be/jus5fNC1eYg?t=81) may also be helpful)
+> **Note**
+> A API-Key is required for using the API.<br/>
+> You can get a key - if you have a payed plan - at https://yourconference.sched.com/editor/exports/api (this [video](https://youtu.be/jus5fNC1eYg?t=81) may also be helpful)
 
 This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``](./openapi/openapi.yml) using [OpenAPI Generator](https://openapi-generator.tech/).
 
