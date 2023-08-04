@@ -19,12 +19,6 @@ tags:
   - name: session
   - name: user
   - name: role
-components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: query
-      name: api_key
 paths:
   /api/session/add:
     post:
@@ -135,9 +129,18 @@ paths:
             enum: ['Y', 'N'] 
             maxLength: 1
           description: 'Y = session is active, N = session is deactivated and hidden'
+        - name: custom_fields
+          in: query
+          schema:
+            type: object
+          description: 'To add custom named fields, just add your field names and their values'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/session/mod:
     post:
@@ -246,10 +249,14 @@ paths:
           description: 'Y = session is active, N = session is deactivated and hidden'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/session/del:
-    delete:
+    get:
       tags:
         - "session"
       operationId: deleteSession
@@ -266,7 +273,11 @@ paths:
           description: 'Must be a unique alpha-numeric string. E.g.: 123, PANEL4, ST45K etc.'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/session/list:
     get:
@@ -302,7 +313,16 @@ paths:
           description: 'Include this parameter with value "Y" if you have custom added fields. Note that spaces in field name will be replaced by underscores.'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
       deprecated: false
   /api/session/export:
     get:
@@ -322,6 +342,7 @@ paths:
           in: query
           schema:
             type: string
+          example: 'json'
           description: 'One of "csv", "xml", "json", "xls" (returns xlsx-File). Defaults to "csv"'
         - name: fields
           in: query
@@ -355,7 +376,16 @@ paths:
           description: 'Include this parameter with value "Y" if you have custom added fields. Note that spaces in field name will be replaced by underscores.'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExportSession'
       deprecated: false
   /api/user/list:
     get:
@@ -378,7 +408,16 @@ paths:
           description: 'Comma separated list of fields. Default: "username", "name", "phone", "email", "joined", "lastactive", "avatar", "company", "position", "location". Available fields: "id", "username", "name", "phone", "email", "url", "about", "role", "joined", "lastactive", "avatar", "company", "position", "location";'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
       deprecated: false
   /api/user/add:
     post:
@@ -417,8 +456,9 @@ paths:
           in: query
           schema:
             type: string
-            enum: ['0', '1']
+            enum: ['1', '0']
             maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off)'
         - name: role
           in: query
           schema:
@@ -446,6 +486,7 @@ paths:
           in: query
           schema:
             type: string
+            format: uri
             maxLength: 1024
           description: 'Publicly accessible, not shortened URL to gif, jpg or png image. Images are copied and resized on our server'
         - name: location
@@ -490,7 +531,14 @@ paths:
           description: 'Undocumented. Needed to link existing accounts with this email'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAdded'
       deprecated: false
   /api/role/add:
     get:
@@ -529,7 +577,11 @@ paths:
           description: 'Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user'
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
       deprecated: false
   /api/role/del:
     get:
@@ -561,11 +613,175 @@ paths:
           description: "Comma separated string of session id's which the user will be disconnected from. If no sessions provided, the user will be disconnected from all sessions associated with given role"
       responses:
         '200':
-          description: Returned if the request is successful
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
       deprecated: false
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+  schemas:
+    User:
+      type: object
+      readOnly: true
+      properties:
+        username:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        joined:
+          type: string
+          format: date-time
+        lastactive:
+          type: string
+          format: date-time
+        avatar:
+          type: string
+          format: uri
+        company:
+          type: string
+        position:
+          type: string
+        location:
+          type: string
+    UserAdded:
+      type: object
+      readOnly: true
+      properties:
+        status:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+          description: 'Only returned when the user is created'
+        id:
+          type: string
+        modified:
+          type: integer
+        tags:
+          type: string
+    Session:
+      type: object
+      readOnly: true
+      properties:
+        event_key:
+          type: string
+        active:
+          type: string
+          enum: ['Y', 'N']
+        pinned:
+          type: string
+          enum: ['Y', 'N']
+        name:
+          type: string
+        event_start:
+          type: string
+          format: date-time
+        event_end:
+          type: string
+          format: date-time
+        event_type:
+          type: string
+        description:
+          type: string
+        seats:
+          type: string
+          description: 'Number of seats... as string'
+        goers:
+          type: string
+          description: 'Number of goers... as string'
+        checkins:
+          type: string
+          description: 'Number of check-ins... as string'
+        invite_only:
+          type: string
+          enum: ['Y', 'N']
+        venue:
+          type: string
+        audience:
+          type: string
+        subject:
+          type: string
+        id:
+          type: string
+          description: 'A hexadecimal string'
+        venue_id:
+          type: string
+        speakers:
+          type: string
+          description: 'Comma separated list of speakers'
+    ExportSession:
+      type: object
+      readOnly: true
+      properties:
+        event_key:
+          type: string
+          format: uuid
+        active:
+          type: string
+          enum: ['Y', 'N']
+        pinned:
+          type: string
+          enum: ['Y', 'N']
+        name:
+          type: string
+        event_start:
+          type: string
+          format: date-time
+        event_end:
+          type: string
+          format: date-time
+        event_type:
+          type: string
+        seats:
+          type: string
+          description: 'Number of seats... as string'
+        goers:
+          type: string
+          description: 'Number of goers... as string'
+        invite_only:
+          type: string
+          enum: ['Y', 'N']
+        venue:
+          type: string
+        id:
+          type: string
+          description: 'A hexadecimal string'
+        venue_id:
+          type: string
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportSpeaker'
+        # Ommited all date components fields as the can be acquired using event_start or event_end
+        event_type_sort:
+          type: string
+          description: 'Numeric string'
+    ExportSpeaker:
+      type: object
+      readOnly: true
+      properties:
+        username:
+          type: string
+        id:
+          type: string
+          description: 'Numeric string'
+        name:
+          type: string
+        company:
+          type: string
+        custom_order:
+          type: integer
 
 
 
-
-
- 
