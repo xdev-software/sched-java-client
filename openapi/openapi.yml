@@ -84,6 +84,7 @@ paths:
           in: query
           schema:
             type: string
+            format: uri
             maxLength: 250
           description: 'URL for media: audio/video/documents. Must use HTTPS.'
         - name: venue
@@ -114,6 +115,7 @@ paths:
           in: query
           schema:
             type: string
+            format: uri
             maxLength: 1024
           description: 'URL used for Custom Button'
         - name: ticket_message
@@ -202,6 +204,7 @@ paths:
           in: query
           schema:
             type: string
+            format: uri
             maxLength: 250
           description: 'URL for media: audio/video/documents. Must use HTTPS.'
         - name: venue
@@ -232,6 +235,7 @@ paths:
           in: query
           schema:
             type: string
+            format: uri
             maxLength: 1024
           description: 'URL used for Custom Button'
         - name: ticket_message
@@ -782,6 +786,3 @@ components:
           type: string
         custom_order:
           type: integer
-
-
-
