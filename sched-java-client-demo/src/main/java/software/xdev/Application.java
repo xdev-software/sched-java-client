@@ -23,7 +23,7 @@ public final class Application
 {
 	public static final Logger LOG = LoggerFactory.getLogger(Application.class);
 	private static final String LOG_RESPONSE = "Response: {}";
-	private static String TEST_USER;
+	private static String testUser;
 	public static final String SESSION_KEY = "TEST-123" + System.currentTimeMillis() + "_DELETE_ME";
 	
 	public static void main(final String[] args)
@@ -90,7 +90,7 @@ public final class Application
 			null,
 			"Y"
 		);
-		TEST_USER = userAdded.getUsername();
+		testUser = userAdded.getUsername();
 		LOG.info("Added user: {}", userAdded);
 		
 		LOG.info("=== USER: LIST ===");
@@ -160,11 +160,11 @@ public final class Application
 	{
 		final RoleApi roleApi = new RoleApi(apiClient);
 		LOG.info("=== ROLE: ADD ===");
-		final String roleAddResponse = roleApi.addRole(TEST_USER, "speaker", null, null);
+		final String roleAddResponse = roleApi.addRole(testUser, "speaker", null, null);
 		LOG.info(LOG_RESPONSE, roleAddResponse);
 		
 		LOG.info("=== ROLE: \"DELETE\"/REMOVE ===");
-		final String roleDeleteResponse = roleApi.deleteRole(TEST_USER, "speaker", null);
+		final String roleDeleteResponse = roleApi.deleteRole(testUser, "speaker", null);
 		LOG.info(LOG_RESPONSE, roleDeleteResponse);
 	}
 	
