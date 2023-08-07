@@ -287,7 +287,8 @@
 			<properties>
 				<basePackage>software.xdev.sched</basePackage>
 
-				<generatedDir>${project.basedir}/src/generated/java</generatedDir>
+				<generatedDirRelative>src/generated/java</generatedDirRelative>
+				<generatedDir>${project.basedir}/${generatedDirRelative}</generatedDir>
 				<openApiRelativeGeneratorDir>src/gen</openApiRelativeGeneratorDir>
 				<openApiGeneratorDir>
 					${project.basedir}/target/generated-sources/openapi/${openApiRelativeGeneratorDir}
@@ -295,6 +296,35 @@
 			</properties>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>3.3.1</version>
+						<executions>
+							<execution>
+								<id>pre-generation-clean</id>
+								<phase>initialize</phase>
+								<goals>
+									<goal>clean</goal>
+								</goals>
+								<configuration>
+									<excludeDefaultDirectories>true</excludeDefaultDirectories>
+									<filesets>
+										<fileset>
+											<directory>${generatedDir}</directory>
+										</fileset>
+									</filesets>
+								</configuration>
+							</execution>
+							<execution>
+								<id>post-generation-clean</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>clean</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.openapitools</groupId>
 						<artifactId>openapi-generator-maven-plugin</artifactId>
@@ -338,7 +368,7 @@
 						<executions>
 							<execution>
 								<id>copy-generated-resources</id>
-								<phase>process-resources</phase>
+								<phase>process-sources</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
@@ -354,31 +384,26 @@
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-clean-plugin</artifactId>
-						<version>3.3.1</version>
+						<groupId>io.github.floverfelt</groupId>
+						<artifactId>find-and-replace-maven-plugin</artifactId>
+						<version>1.1.0</version>
 						<executions>
 							<execution>
-								<id>pre-generation-clean</id>
-								<phase>initialize</phase>
+								<!-- Sched Patch No1: Simple text is returned as text/html despite having no HTML -->
+								<id>handle-html-like-text</id>
+								<phase>process-sources</phase>
 								<goals>
-									<goal>clean</goal>
+									<goal>find-and-replace</goal>
 								</goals>
 								<configuration>
-									<excludeDefaultDirectories>true</excludeDefaultDirectories>
-									<filesets>
-										<fileset>
-											<directory>${generatedDir}</directory>
-										</fileset>
-									</filesets>
+									<replacementType>file-contents</replacementType>
+									<baseDir>${generatedDirRelative}/software/xdev/sched/client/</baseDir>
+									<fileMask>ApiClient.java</fileMask>
+									<findRegex>"text\/plain"\.equalsIgnoreCase\(mimeType\)</findRegex>
+									<!-- @formatter:off DO NOT INTRODUCE LINE BREAK -->
+									<replaceValue>"text/plain".equalsIgnoreCase(mimeType) || "text/html".equalsIgnoreCase(mimeType)</replaceValue>
+									<!-- @formatter:on -->
 								</configuration>
-							</execution>
-							<execution>
-								<id>post-generation-clean</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>clean</goal>
-								</goals>
 							</execution>
 						</executions>
 					</plugin>

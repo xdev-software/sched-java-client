@@ -21,7 +21,6 @@ import software.xdev.sched.model.*;
 import software.xdev.sched.client.Pair;
 
 import software.xdev.sched.model.ExportSession;
-import java.time.OffsetDateTime;
 import software.xdev.sched.model.Session;
 import java.net.URI;
 
@@ -77,7 +76,7 @@ public class SessionApi {
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String addSession(String sessionKey, String name, OffsetDateTime sessionStart, OffsetDateTime sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Object customFields) throws ApiException {
+  public String addSession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Object customFields) throws ApiException {
     return this.addSession(sessionKey, name, sessionStart, sessionEnd, sessionType, sessionSubtype, description, mediaUrl, venue, address, tags, seats, rsvpUrl, ticketMessage, active, customFields, Collections.emptyMap());
   }
 
@@ -105,7 +104,7 @@ public class SessionApi {
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String addSession(String sessionKey, String name, OffsetDateTime sessionStart, OffsetDateTime sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Object customFields, Map<String, String> additionalHeaders) throws ApiException {
+  public String addSession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Object customFields, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'sessionKey' is set
@@ -458,7 +457,7 @@ public class SessionApi {
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String modifySession(String sessionKey, String name, OffsetDateTime sessionStart, OffsetDateTime sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active) throws ApiException {
+  public String modifySession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active) throws ApiException {
     return this.modifySession(sessionKey, name, sessionStart, sessionEnd, sessionType, sessionSubtype, description, mediaUrl, venue, address, tags, seats, rsvpUrl, ticketMessage, active, Collections.emptyMap());
   }
 
@@ -485,7 +484,7 @@ public class SessionApi {
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String modifySession(String sessionKey, String name, OffsetDateTime sessionStart, OffsetDateTime sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Map<String, String> additionalHeaders) throws ApiException {
+  public String modifySession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'sessionKey' is set

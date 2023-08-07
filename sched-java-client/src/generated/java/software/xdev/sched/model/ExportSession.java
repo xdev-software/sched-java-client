@@ -20,10 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import software.xdev.sched.model.ExportSpeaker;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -54,7 +52,7 @@ import java.util.StringJoiner;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExportSession {
   public static final String JSON_PROPERTY_EVENT_KEY = "event_key";
-  private UUID eventKey;
+  private String eventKey;
 
   /**
    * Gets or Sets active
@@ -136,10 +134,10 @@ public class ExportSession {
   private String name;
 
   public static final String JSON_PROPERTY_EVENT_START = "event_start";
-  private OffsetDateTime eventStart;
+  private String eventStart;
 
   public static final String JSON_PROPERTY_EVENT_END = "event_end";
-  private OffsetDateTime eventEnd;
+  private String eventEnd;
 
   public static final String JSON_PROPERTY_EVENT_TYPE = "event_type";
   private String eventType;
@@ -206,7 +204,7 @@ public class ExportSession {
   public ExportSession() {
   }
 
-  public ExportSession eventKey(UUID eventKey) {
+  public ExportSession eventKey(String eventKey) {
     
     this.eventKey = eventKey;
     return this;
@@ -220,14 +218,14 @@ public class ExportSession {
   @JsonProperty(JSON_PROPERTY_EVENT_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public UUID getEventKey() {
+  public String getEventKey() {
     return eventKey;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EVENT_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEventKey(UUID eventKey) {
+  public void setEventKey(String eventKey) {
     this.eventKey = eventKey;
   }
 
@@ -310,7 +308,7 @@ public class ExportSession {
   }
 
 
-  public ExportSession eventStart(OffsetDateTime eventStart) {
+  public ExportSession eventStart(String eventStart) {
     
     this.eventStart = eventStart;
     return this;
@@ -324,19 +322,19 @@ public class ExportSession {
   @JsonProperty(JSON_PROPERTY_EVENT_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OffsetDateTime getEventStart() {
+  public String getEventStart() {
     return eventStart;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EVENT_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEventStart(OffsetDateTime eventStart) {
+  public void setEventStart(String eventStart) {
     this.eventStart = eventStart;
   }
 
 
-  public ExportSession eventEnd(OffsetDateTime eventEnd) {
+  public ExportSession eventEnd(String eventEnd) {
     
     this.eventEnd = eventEnd;
     return this;
@@ -350,14 +348,14 @@ public class ExportSession {
   @JsonProperty(JSON_PROPERTY_EVENT_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OffsetDateTime getEventEnd() {
+  public String getEventEnd() {
     return eventEnd;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EVENT_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEventEnd(OffsetDateTime eventEnd) {
+  public void setEventEnd(String eventEnd) {
     this.eventEnd = eventEnd;
   }
 

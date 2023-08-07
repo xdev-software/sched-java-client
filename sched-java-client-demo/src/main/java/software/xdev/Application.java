@@ -1,9 +1,6 @@
 package software.xdev;
 
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -26,7 +23,7 @@ public final class Application
 {
 	public static final Logger LOG = LoggerFactory.getLogger(Application.class);
 	private static final String LOG_RESPONSE = "Response: {}";
-	private static final String TEST_USER = "TestUser" + System.currentTimeMillis() + "_DELETE_ME";
+	private static String TEST_USER;
 	public static final String SESSION_KEY = "TEST-123" + System.currentTimeMillis() + "_DELETE_ME";
 	
 	public static void main(final String[] args)
@@ -74,7 +71,7 @@ public final class Application
 		
 		LOG.info("=== USER: ADD ===");
 		final UserAdded userAdded = userApi.addUser(
-			TEST_USER,
+			"TestUser" + System.currentTimeMillis() + "_DELETE_ME",
 			// Temporary E-Mail for test may be acquired by e.g. https://temp-mail.org
 			"testuser@example.nonexistent",
 			null,
@@ -93,6 +90,7 @@ public final class Application
 			null,
 			"Y"
 		);
+		TEST_USER = userAdded.getUsername();
 		LOG.info("Added user: {}", userAdded);
 		
 		LOG.info("=== USER: LIST ===");
@@ -102,14 +100,13 @@ public final class Application
 	
 	private static void checkSessionAPI(final CustomApiClient apiClient)
 	{
-		
 		final SessionApi sessionApi = new SessionApi(apiClient);
 		LOG.info("=== SESSION: ADD ===");
 		final String addSessionResponse = sessionApi.addSession(
 			SESSION_KEY,
 			"TestSession",
-			OffsetDateTime.of(LocalDateTime.of(2030, 1, 1, 14, 0), ZoneOffset.UTC),
-			OffsetDateTime.of(LocalDateTime.of(2030, 1, 1, 16, 0), ZoneOffset.UTC),
+			"2023-01-01 14:00",
+			"2023-01-01 16:00",
 			"session",
 			null,
 			"Test session",
@@ -141,8 +138,7 @@ public final class Application
 			null,
 			null,
 			null,
-			"Y",
-			null
+			"Y"
 		);
 		LOG.info(LOG_RESPONSE, modifySessionResponse);
 		
@@ -168,7 +164,7 @@ public final class Application
 		LOG.info(LOG_RESPONSE, roleAddResponse);
 		
 		LOG.info("=== ROLE: \"DELETE\"/REMOVE ===");
-		final String roleDeleteResponse = roleApi.deleteRole(TEST_USER, "speaker", null, null);
+		final String roleDeleteResponse = roleApi.deleteRole(TEST_USER, "speaker", null);
 		LOG.info(LOG_RESPONSE, roleDeleteResponse);
 	}
 	
@@ -176,9 +172,9 @@ public final class Application
 	{
 		public CustomApiClient(final String apiKey)
 		{
+			this.setApiKey(apiKey);
 			this.setConnectTimeout(30_000);
 			this.setUserAgent("Sched-Java-Client-Demo");
-			this.setApiKey(apiKey);
 		}
 	}
 }

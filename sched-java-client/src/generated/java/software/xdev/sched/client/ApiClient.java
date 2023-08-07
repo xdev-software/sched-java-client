@@ -753,7 +753,7 @@ public class ApiClient extends JavaTimeFormatter {
       }
 
       return objectMapper.readValue(content, valueType);
-    } else if ("text/plain".equalsIgnoreCase(mimeType)) {
+    } else if ("text/plain".equalsIgnoreCase(mimeType) || "text/html".equalsIgnoreCase(mimeType)) {
       // convert input stream to string
       java.util.Scanner s = new java.util.Scanner(entity.getContent()).useDelimiter("\\A");
       return (T) (s.hasNext() ? s.next() : "");

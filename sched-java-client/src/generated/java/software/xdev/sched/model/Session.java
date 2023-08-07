@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -135,10 +134,10 @@ public class Session {
   private String name;
 
   public static final String JSON_PROPERTY_EVENT_START = "event_start";
-  private OffsetDateTime eventStart;
+  private String eventStart;
 
   public static final String JSON_PROPERTY_EVENT_END = "event_end";
-  private OffsetDateTime eventEnd;
+  private String eventEnd;
 
   public static final String JSON_PROPERTY_EVENT_TYPE = "event_type";
   private String eventType;
@@ -318,7 +317,7 @@ public class Session {
   }
 
 
-  public Session eventStart(OffsetDateTime eventStart) {
+  public Session eventStart(String eventStart) {
     
     this.eventStart = eventStart;
     return this;
@@ -332,19 +331,19 @@ public class Session {
   @JsonProperty(JSON_PROPERTY_EVENT_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OffsetDateTime getEventStart() {
+  public String getEventStart() {
     return eventStart;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EVENT_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEventStart(OffsetDateTime eventStart) {
+  public void setEventStart(String eventStart) {
     this.eventStart = eventStart;
   }
 
 
-  public Session eventEnd(OffsetDateTime eventEnd) {
+  public Session eventEnd(String eventEnd) {
     
     this.eventEnd = eventEnd;
     return this;
@@ -358,14 +357,14 @@ public class Session {
   @JsonProperty(JSON_PROPERTY_EVENT_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OffsetDateTime getEventEnd() {
+  public String getEventEnd() {
     return eventEnd;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EVENT_END)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEventEnd(OffsetDateTime eventEnd) {
+  public void setEventEnd(String eventEnd) {
     this.eventEnd = eventEnd;
   }
 

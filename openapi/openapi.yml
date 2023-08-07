@@ -27,7 +27,7 @@ paths:
       operationId: addSession
       security:
         - ApiKeyAuth: []
-      parameters: 
+      parameters:
         - name: session_key
           in: query
           required: true
@@ -48,7 +48,7 @@ paths:
           required: true
           schema:
             type: string
-            format: date-time
+            # format: date-time - NOT VALID RFC 3339 DATE!
             maxLength: 40
           example: '2030-01-02 12:00'
           description: 'Full date + time for start of session Format: YYYY-MM-DD HH:MM'
@@ -57,7 +57,7 @@ paths:
           required: true
           schema:
             type: string
-            format: date-time
+            # format: date-time - NOT VALID RFC 3339 DATE!
             maxLength: 40
           example: '2030-01-02 14:00'
           description: 'Full date + time for end of session Format: YYYY-MM-DD HH:MM'
@@ -128,7 +128,7 @@ paths:
           in: query
           schema:
             type: string
-            enum: ['Y', 'N'] 
+            enum: [ 'Y', 'N' ]
             maxLength: 1
           description: 'Y = session is active, N = session is deactivated and hidden'
         - name: custom_fields
@@ -151,7 +151,7 @@ paths:
       operationId: modifySession
       security:
         - ApiKeyAuth: []
-      parameters: 
+      parameters:
         - name: session_key
           in: query
           required: true
@@ -170,7 +170,7 @@ paths:
           in: query
           schema:
             type: string
-            format: date-time
+            # format: date-time - NOT VALID RFC 3339 DATE!
             maxLength: 40
           example: '2030-01-02 12:00'
           description: 'Full date + time for start of session Format: YYYY-MM-DD HH:MM'
@@ -178,7 +178,7 @@ paths:
           in: query
           schema:
             type: string
-            format: date-time
+            # format: date-time - NOT VALID RFC 3339 DATE!
             maxLength: 40
           example: '2030-01-02 14:00'
           description: 'Full date + time for end of session Format: YYYY-MM-DD HH:MM'
@@ -248,7 +248,7 @@ paths:
           in: query
           schema:
             type: string
-            enum: ['Y', 'N'] 
+            enum: [ 'Y', 'N' ]
             maxLength: 1
           description: 'Y = session is active, N = session is deactivated and hidden'
       responses:
@@ -266,7 +266,7 @@ paths:
       operationId: deleteSession
       security:
         - ApiKeyAuth: []
-      parameters: 
+      parameters:
         - name: session_key
           in: query
           required: true
@@ -290,7 +290,7 @@ paths:
       operationId: listSessions
       security:
         - ApiKeyAuth: []
-      parameters: 
+      parameters:
         - name: since
           in: query
           schema:
@@ -335,7 +335,7 @@ paths:
       operationId: exportSessions
       security:
         - ApiKeyAuth: []
-      parameters: 
+      parameters:
         - name: since
           in: query
           schema:
@@ -428,7 +428,7 @@ paths:
       tags:
         - "user"
       operationId: addUser
-      security: 
+      security:
         - ApiKeyAuth: []
       parameters:
         - name: username
@@ -690,10 +690,10 @@ components:
           type: string
         event_start:
           type: string
-          format: date-time
+          # format: date-time - NOT VALID RFC 3339 DATE!
         event_end:
           type: string
-          format: date-time
+          # format: date-time - NOT VALID RFC 3339 DATE!
         event_type:
           type: string
         description:
@@ -730,7 +730,6 @@ components:
       properties:
         event_key:
           type: string
-          format: uuid
         active:
           type: string
           enum: ['Y', 'N']
@@ -741,10 +740,10 @@ components:
           type: string
         event_start:
           type: string
-          format: date-time
+          # format: date-time - NOT VALID RFC 3339 DATE!
         event_end:
           type: string
-          format: date-time
+          # format: date-time - NOT VALID RFC 3339 DATE!
         event_type:
           type: string
         seats:
