@@ -5,3 +5,4 @@ The Java API Client can be generated using ``mvn clean compile -P openapi-genera
 Helpful links:
 * https://jsonformatter.org/json-to-jsonschema
 * https://swagger.io/specification/
+* https://editor.swagger.io/
