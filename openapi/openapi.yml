@@ -644,10 +644,10 @@ components:
           type: string
         joined:
           type: string
-          format: date-time
+          # format: date-time - NOT VALID RFC 3339 DATE!
         lastactive:
           type: string
-          format: date-time
+          # format: date-time - NOT VALID RFC 3339 DATE!
         avatar:
           type: string
           format: uri
