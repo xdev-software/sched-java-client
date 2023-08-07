@@ -53,6 +53,21 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
 ¹ Handles `User Session Key`
 </details>
 
+> **Note**
+> The client may look/behave odd because the Sched API violates some well established standards.
+> <details><summary>List of violations</summary>
+> 
+> * Errors are (partially) returned with status code [``200 (OK)``](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)
+> * ``text/html`` is used as [content type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#important_mime_types_for_web_developers) for plain text (should be ``text/plain``)
+> * ``boolean`` is handled as ``"Y"``/``"N"`` or as ``"0"``/``"1"``
+> * Numbers are (partially) handled as string
+> * Dates are not formatted according to [``RFC 3339``](https://datatracker.ietf.org/doc/html/rfc3339)
+> * Sometimes unixtimestamps are used instead of dates
+> * Arrays are not handle as arrays and instead comma separated lists are used
+> * Incorrect [HTTP Request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) are used. E.g. ``GET`` for  ``/api/session/del`` (should be ``DELETE``)
+> 
+> </details>
+
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/sched-java-client/releases/latest#Installation)
 
