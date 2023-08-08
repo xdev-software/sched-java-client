@@ -39,7 +39,7 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
   * Modify ✔️
   * Delete ✔️
   * List ✔️
-  * Export
+  * Export ✔️
   * Seats
   * Count
 * User
