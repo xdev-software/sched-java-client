@@ -5,17 +5,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.xdev-software</groupId>
-	<artifactId>openapi-client-maven-template</artifactId>
+	<artifactId>sched-java-client</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>openapi-client-maven-template</name>
-	<description>openapi-client-maven-template</description>
-	<url>https://github.com/xdev-software/openapi-client-maven-template</url>
+	<name>sched-java-client</name>
+	<description>sched-java-client</description>
+	<url>https://github.com/xdev-software/sched-java-client</url>
 
 	<scm>
-		<url>https://github.com/xdev-software/openapi-client-maven-template</url>
-		<connection>https://github.com/xdev-software/openapi-client-maven-template.git</connection>
+		<url>https://github.com/xdev-software/sched-java-client</url>
+		<connection>https://github.com/xdev-software/sched-java-client.git</connection>
 	</scm>
 
 	<inceptionYear>2023</inceptionYear>
@@ -285,7 +285,7 @@
 		<profile>
 			<id>openapi-generator</id>
 			<properties>
-				<basePackage>software.xdev.INSERT_NAME_HERE</basePackage>
+				<basePackage>software.xdev.sched</basePackage>
 
 				<generatedDirRelative>src/generated/java</generatedDirRelative>
 				<generatedDir>${project.basedir}/${generatedDirRelative}</generatedDir>
@@ -379,6 +379,30 @@
 											<directory>${openApiGeneratorDir}</directory>
 										</resource>
 									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>io.github.floverfelt</groupId>
+						<artifactId>find-and-replace-maven-plugin</artifactId>
+						<version>1.1.0</version>
+						<executions>
+							<execution>
+								<!-- Sched Patch No1: Simple text is returned as text/html despite having no HTML -->
+								<id>handle-html-like-text</id>
+								<phase>process-sources</phase>
+								<goals>
+									<goal>find-and-replace</goal>
+								</goals>
+								<configuration>
+									<replacementType>file-contents</replacementType>
+									<baseDir>${generatedDirRelative}/software/xdev/sched/client/</baseDir>
+									<fileMask>ApiClient.java</fileMask>
+									<findRegex>"text\/plain"\.equalsIgnoreCase\(mimeType\)</findRegex>
+									<!-- @formatter:off DO NOT INTRODUCE LINE BREAK -->
+									<replaceValue>"text/plain".equalsIgnoreCase(mimeType) || "text/html".equalsIgnoreCase(mimeType)</replaceValue>
+									<!-- @formatter:on -->
 								</configuration>
 							</execution>
 						</executions>
