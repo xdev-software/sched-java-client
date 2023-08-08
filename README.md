@@ -22,7 +22,7 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
 > * Numbers are (partially) handled as string
 > * Dates are not formatted according to [``RFC 3339``](https://datatracker.ietf.org/doc/html/rfc3339)
 > * Sometimes unix timestamps are used instead of dates
-> * Arrays are not handle as arrays and instead comma separated lists are used
+> * Arrays are not handled as arrays and instead comma separated lists are used
 > * Incorrect [HTTP Request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) are used. E.g. ``GET`` for  ``/api/session/del`` (should be ``DELETE``)
 > * Some endpoints don't return JSON by default
 > 
