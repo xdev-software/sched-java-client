@@ -17,7 +17,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import software.xdev.sched.client.ApiException;
 import software.xdev.sched.client.ApiClient;
 import software.xdev.sched.client.Configuration;
-import software.xdev.sched.model.*;
 import software.xdev.sched.client.Pair;
 
 import java.net.URI;
