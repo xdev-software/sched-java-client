@@ -1,3 +1,6 @@
+# 1.0.1
+* Updated openapi generator
+
 # 1.0.0 
 
 * Initial release
