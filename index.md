@@ -1,6 +1,7 @@
 [![Latest version](https://img.shields.io/maven-central/v/com.xdev-software/sched-java-client?logo=apache%20maven)](https://mvnrepository.com/artifact/com.xdev-software/sched-java-client)
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/sched-java-client/checkBuild.yml?branch=develop)](https://github.com/xdev-software/sched-java-client/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_sched-java-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_sched-java-client)
+[![API Specification Editor](https://img.shields.io/badge/API--Spec-Editor-85ea2d?logo=swagger)](https://editor.swagger.io/?url=https://raw.githubusercontent.com/xdev-software/sched-java-client/develop/openapi/openapi.yml)
 
 # <img src="https://i0.wp.com/sched.com/wp-content/uploads/2021/11/cropped-favicon.png?fit=28,28&ssl=1" height="28" /> [sched](https://sched.com/)-java-client
 Java client for the [Sched API](https://sched.com/api)
@@ -21,7 +22,7 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
 > * Numbers are (partially) handled as string
 > * Dates are not formatted according to [``RFC 3339``](https://datatracker.ietf.org/doc/html/rfc3339)
 > * Sometimes unix timestamps are used instead of dates
-> * Arrays are not handle as arrays and instead comma separated lists are used
+> * Arrays are not handled as arrays and instead comma separated lists are used
 > * Incorrect [HTTP Request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) are used. E.g. ``GET`` for  ``/api/session/del`` (should be ``DELETE``)
 > * Some endpoints don't return JSON by default
 > 
@@ -38,7 +39,7 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
   * Modify ✔️
   * Delete ✔️
   * List ✔️
-  * Export
+  * Export ✔️
   * Seats
   * Count
 * User
