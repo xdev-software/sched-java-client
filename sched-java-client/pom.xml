@@ -401,7 +401,7 @@
 									<fileMask>ApiClient.java</fileMask>
 									<findRegex>"text\/plain"\.equalsIgnoreCase\(mimeType\)</findRegex>
 									<!-- @formatter:off DO NOT INTRODUCE LINE BREAK -->
-									<replaceValue>"text/plain".equalsIgnoreCase(mimeType) || "text/html".equalsIgnoreCase(mimeType)</replaceValue>
+									<replaceValue><![CDATA[valueRawType.equals(String.class) && ("text/plain".equalsIgnoreCase(mimeType) || "text/html".equalsIgnoreCase(mimeType))]]></replaceValue>
 									<!-- @formatter:on -->
 								</configuration>
 							</execution>
