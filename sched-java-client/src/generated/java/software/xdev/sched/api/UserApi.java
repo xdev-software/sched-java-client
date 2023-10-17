@@ -175,7 +175,7 @@ public class UserApi {
    * 
    * 
    * @param format  (optional, default to json)
-   * @param fields Comma separated list of fields. Default: \&quot;username\&quot;, \&quot;name\&quot;, \&quot;phone\&quot;, \&quot;email\&quot;, \&quot;joined\&quot;, \&quot;lastactive\&quot;, \&quot;avatar\&quot;, \&quot;company\&quot;, \&quot;position\&quot;, \&quot;location\&quot;. Available fields: \&quot;id\&quot;, \&quot;username\&quot;, \&quot;name\&quot;, \&quot;phone\&quot;, \&quot;email\&quot;, \&quot;url\&quot;, \&quot;about\&quot;, \&quot;role\&quot;, \&quot;joined\&quot;, \&quot;lastactive\&quot;, \&quot;avatar\&quot;, \&quot;company\&quot;, \&quot;position\&quot;, \&quot;location\&quot;; (optional)
+   * @param fields Comma separated list of fields. Default: username, name, phone, email, joined, lastactive, avatar, company, position, location. Available fields: id, username, name, phone, email, url, about, role, joined, lastactive, avatar, company, position, location (optional)
    * @return List&lt;User&gt;
    * @throws ApiException if fails to make API call
    */
@@ -188,7 +188,7 @@ public class UserApi {
    * 
    * 
    * @param format  (optional, default to json)
-   * @param fields Comma separated list of fields. Default: \&quot;username\&quot;, \&quot;name\&quot;, \&quot;phone\&quot;, \&quot;email\&quot;, \&quot;joined\&quot;, \&quot;lastactive\&quot;, \&quot;avatar\&quot;, \&quot;company\&quot;, \&quot;position\&quot;, \&quot;location\&quot;. Available fields: \&quot;id\&quot;, \&quot;username\&quot;, \&quot;name\&quot;, \&quot;phone\&quot;, \&quot;email\&quot;, \&quot;url\&quot;, \&quot;about\&quot;, \&quot;role\&quot;, \&quot;joined\&quot;, \&quot;lastactive\&quot;, \&quot;avatar\&quot;, \&quot;company\&quot;, \&quot;position\&quot;, \&quot;location\&quot;; (optional)
+   * @param fields Comma separated list of fields. Default: username, name, phone, email, joined, lastactive, avatar, company, position, location. Available fields: id, username, name, phone, email, url, about, role, joined, lastactive, avatar, company, position, location (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return List&lt;User&gt;
    * @throws ApiException if fails to make API call

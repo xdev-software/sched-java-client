@@ -31,10 +31,13 @@ import java.util.StringJoiner;
  * User
  */
 @JsonPropertyOrder({
+  User.JSON_PROPERTY_ID,
   User.JSON_PROPERTY_USERNAME,
   User.JSON_PROPERTY_NAME,
   User.JSON_PROPERTY_PHONE,
   User.JSON_PROPERTY_EMAIL,
+  User.JSON_PROPERTY_ABOUT,
+  User.JSON_PROPERTY_ROLE,
   User.JSON_PROPERTY_JOINED,
   User.JSON_PROPERTY_LASTACTIVE,
   User.JSON_PROPERTY_AVATAR,
@@ -44,6 +47,9 @@ import java.util.StringJoiner;
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class User {
+  public static final String JSON_PROPERTY_ID = "id";
+  private String id;
+
   public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
 
@@ -55,6 +61,12 @@ public class User {
 
   public static final String JSON_PROPERTY_EMAIL = "email";
   private String email;
+
+  public static final String JSON_PROPERTY_ABOUT = "about";
+  private String about;
+
+  public static final String JSON_PROPERTY_ROLE = "role";
+  private String role;
 
   public static final String JSON_PROPERTY_JOINED = "joined";
   private String joined;
@@ -76,6 +88,32 @@ public class User {
 
   public User() {
   }
+
+  public User id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getId() {
+    return id;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   public User username(String username) {
     
@@ -178,6 +216,58 @@ public class User {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEmail(String email) {
     this.email = email;
+  }
+
+
+  public User about(String about) {
+    
+    this.about = about;
+    return this;
+  }
+
+   /**
+   * Get about
+   * @return about
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ABOUT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getAbout() {
+    return about;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ABOUT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAbout(String about) {
+    this.about = about;
+  }
+
+
+  public User role(String role) {
+    
+    this.role = role;
+    return this;
+  }
+
+   /**
+   * Comma separated list of roles
+   * @return role
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ROLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getRole() {
+    return role;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ROLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRole(String role) {
+    this.role = role;
   }
 
 
@@ -345,10 +435,13 @@ public class User {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.username, user.username) &&
+    return Objects.equals(this.id, user.id) &&
+        Objects.equals(this.username, user.username) &&
         Objects.equals(this.name, user.name) &&
         Objects.equals(this.phone, user.phone) &&
         Objects.equals(this.email, user.email) &&
+        Objects.equals(this.about, user.about) &&
+        Objects.equals(this.role, user.role) &&
         Objects.equals(this.joined, user.joined) &&
         Objects.equals(this.lastactive, user.lastactive) &&
         Objects.equals(this.avatar, user.avatar) &&
@@ -359,17 +452,20 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, name, phone, email, joined, lastactive, avatar, company, position, location);
+    return Objects.hash(id, username, name, phone, email, about, role, joined, lastactive, avatar, company, position, location);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    about: ").append(toIndentedString(about)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    joined: ").append(toIndentedString(joined)).append("\n");
     sb.append("    lastactive: ").append(toIndentedString(lastactive)).append("\n");
     sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
@@ -423,6 +519,16 @@ public class User {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
     // add `username` to the URL query string
     if (getUsername() != null) {
       try {
@@ -457,6 +563,26 @@ public class User {
     if (getEmail() != null) {
       try {
         joiner.add(String.format("%semail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmail()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `about` to the URL query string
+    if (getAbout() != null) {
+      try {
+        joiner.add(String.format("%sabout%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAbout()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `role` to the URL query string
+    if (getRole() != null) {
+      try {
+        joiner.add(String.format("%srole%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRole()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
