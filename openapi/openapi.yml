@@ -409,7 +409,7 @@ paths:
           schema:
             type: string
             maxLength: 512
-          description: 'Comma separated list of fields. Default: "username", "name", "phone", "email", "joined", "lastactive", "avatar", "company", "position", "location". Available fields: "id", "username", "name", "phone", "email", "url", "about", "role", "joined", "lastactive", "avatar", "company", "position", "location";'
+          description: 'Comma separated list of fields. Default: username, name, phone, email, joined, lastactive, avatar, company, position, location. Available fields: id, username, name, phone, email, url, about, role, joined, lastactive, avatar, company, position, location'
       responses:
         '200':
           description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
@@ -634,6 +634,8 @@ components:
       type: object
       readOnly: true
       properties:
+        id:
+          type: string
         username:
           type: string
         name:
@@ -642,6 +644,11 @@ components:
           type: string
         email:
           type: string
+        about:
+          type: string
+        role:
+          type: string
+          description: 'Comma separated list of roles'
         joined:
           type: string
           # format: date-time - NOT VALID RFC 3339 DATE!
