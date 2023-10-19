@@ -71,12 +71,13 @@ public class SessionApi {
    * @param rsvpUrl URL used for Custom Button (optional)
    * @param ticketMessage Custom ticket upgrade message, displayed when attendee attempts to add the session without the correct ticket (accepts basic HTML) (optional)
    * @param active Y &#x3D; session is active, N &#x3D; session is deactivated and hidden (optional)
+   * @param videoStream Livestream url (url is not validated!). Undocumented (optional)
    * @param customFields To add custom named fields, just add your field names and their values (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String addSession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Object customFields) throws ApiException {
-    return this.addSession(sessionKey, name, sessionStart, sessionEnd, sessionType, sessionSubtype, description, mediaUrl, venue, address, tags, seats, rsvpUrl, ticketMessage, active, customFields, Collections.emptyMap());
+  public String addSession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, String videoStream, Object customFields) throws ApiException {
+    return this.addSession(sessionKey, name, sessionStart, sessionEnd, sessionType, sessionSubtype, description, mediaUrl, venue, address, tags, seats, rsvpUrl, ticketMessage, active, videoStream, customFields, Collections.emptyMap());
   }
 
 
@@ -98,12 +99,13 @@ public class SessionApi {
    * @param rsvpUrl URL used for Custom Button (optional)
    * @param ticketMessage Custom ticket upgrade message, displayed when attendee attempts to add the session without the correct ticket (accepts basic HTML) (optional)
    * @param active Y &#x3D; session is active, N &#x3D; session is deactivated and hidden (optional)
+   * @param videoStream Livestream url (url is not validated!). Undocumented (optional)
    * @param customFields To add custom named fields, just add your field names and their values (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String addSession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Object customFields, Map<String, String> additionalHeaders) throws ApiException {
+  public String addSession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, String videoStream, Object customFields, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'sessionKey' is set
@@ -157,6 +159,7 @@ public class SessionApi {
     localVarQueryParams.addAll(apiClient.parameterToPair("rsvp_url", rsvpUrl));
     localVarQueryParams.addAll(apiClient.parameterToPair("ticket_message", ticketMessage));
     localVarQueryParams.addAll(apiClient.parameterToPair("active", active));
+    localVarQueryParams.addAll(apiClient.parameterToPair("video_stream", videoStream));
     localVarQueryParams.addAll(apiClient.parameterToPair("custom_fields", customFields));
     
     localVarHeaderParams.putAll(additionalHeaders);
@@ -453,11 +456,12 @@ public class SessionApi {
    * @param rsvpUrl URL used for Custom Button (optional)
    * @param ticketMessage Custom ticket upgrade message, displayed when attendee attempts to add the session without the correct ticket (accepts basic HTML) (optional)
    * @param active Y &#x3D; session is active, N &#x3D; session is deactivated and hidden (optional)
+   * @param videoStream Livestream url (url is not validated!). Undocumented (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String modifySession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active) throws ApiException {
-    return this.modifySession(sessionKey, name, sessionStart, sessionEnd, sessionType, sessionSubtype, description, mediaUrl, venue, address, tags, seats, rsvpUrl, ticketMessage, active, Collections.emptyMap());
+  public String modifySession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, String videoStream) throws ApiException {
+    return this.modifySession(sessionKey, name, sessionStart, sessionEnd, sessionType, sessionSubtype, description, mediaUrl, venue, address, tags, seats, rsvpUrl, ticketMessage, active, videoStream, Collections.emptyMap());
   }
 
 
@@ -479,11 +483,12 @@ public class SessionApi {
    * @param rsvpUrl URL used for Custom Button (optional)
    * @param ticketMessage Custom ticket upgrade message, displayed when attendee attempts to add the session without the correct ticket (accepts basic HTML) (optional)
    * @param active Y &#x3D; session is active, N &#x3D; session is deactivated and hidden (optional)
+   * @param videoStream Livestream url (url is not validated!). Undocumented (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String modifySession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, Map<String, String> additionalHeaders) throws ApiException {
+  public String modifySession(String sessionKey, String name, String sessionStart, String sessionEnd, String sessionType, String sessionSubtype, String description, URI mediaUrl, String venue, String address, String tags, String seats, URI rsvpUrl, String ticketMessage, String active, String videoStream, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'sessionKey' is set
@@ -517,6 +522,7 @@ public class SessionApi {
     localVarQueryParams.addAll(apiClient.parameterToPair("rsvp_url", rsvpUrl));
     localVarQueryParams.addAll(apiClient.parameterToPair("ticket_message", ticketMessage));
     localVarQueryParams.addAll(apiClient.parameterToPair("active", active));
+    localVarQueryParams.addAll(apiClient.parameterToPair("video_stream", videoStream));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
