@@ -118,6 +118,7 @@ public final class Application
 			null,
 			null,
 			"N",
+			null,
 			Map.of("extra", "Joppiesauce")
 		);
 		LOG.info(LOG_RESPONSE, addSessionResponse);
@@ -138,7 +139,8 @@ public final class Application
 			null,
 			null,
 			null,
-			"Y"
+			"Y",
+			null
 		);
 		LOG.info(LOG_RESPONSE, modifySessionResponse);
 		

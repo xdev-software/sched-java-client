@@ -48,7 +48,8 @@ import java.util.StringJoiner;
   ExportSession.JSON_PROPERTY_ID,
   ExportSession.JSON_PROPERTY_VENUE_ID,
   ExportSession.JSON_PROPERTY_SPEAKERS,
-  ExportSession.JSON_PROPERTY_EVENT_TYPE_SORT
+  ExportSession.JSON_PROPERTY_EVENT_TYPE_SORT,
+  ExportSession.JSON_PROPERTY_VIDEO_STREAM
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExportSession {
@@ -201,6 +202,9 @@ public class ExportSession {
 
   public static final String JSON_PROPERTY_EVENT_TYPE_SORT = "event_type_sort";
   private String eventTypeSort;
+
+  public static final String JSON_PROPERTY_VIDEO_STREAM = "video_stream";
+  private String videoStream;
 
   public ExportSession() {
   }
@@ -602,6 +606,32 @@ public class ExportSession {
     this.eventTypeSort = eventTypeSort;
   }
 
+
+  public ExportSession videoStream(String videoStream) {
+    
+    this.videoStream = videoStream;
+    return this;
+  }
+
+   /**
+   * Livestream url (url is not validated!). Undocumented
+   * @return videoStream
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VIDEO_STREAM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getVideoStream() {
+    return videoStream;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VIDEO_STREAM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVideoStream(String videoStream) {
+    this.videoStream = videoStream;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -625,12 +655,13 @@ public class ExportSession {
         Objects.equals(this.id, exportSession.id) &&
         Objects.equals(this.venueId, exportSession.venueId) &&
         Objects.equals(this.speakers, exportSession.speakers) &&
-        Objects.equals(this.eventTypeSort, exportSession.eventTypeSort);
+        Objects.equals(this.eventTypeSort, exportSession.eventTypeSort) &&
+        Objects.equals(this.videoStream, exportSession.videoStream);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventKey, active, pinned, name, eventStart, eventEnd, eventType, seats, goers, inviteOnly, venue, id, venueId, speakers, eventTypeSort);
+    return Objects.hash(eventKey, active, pinned, name, eventStart, eventEnd, eventType, seats, goers, inviteOnly, venue, id, venueId, speakers, eventTypeSort, videoStream);
   }
 
   @Override
@@ -652,6 +683,7 @@ public class ExportSession {
     sb.append("    venueId: ").append(toIndentedString(venueId)).append("\n");
     sb.append("    speakers: ").append(toIndentedString(speakers)).append("\n");
     sb.append("    eventTypeSort: ").append(toIndentedString(eventTypeSort)).append("\n");
+    sb.append("    videoStream: ").append(toIndentedString(videoStream)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -843,6 +875,16 @@ public class ExportSession {
     if (getEventTypeSort() != null) {
       try {
         joiner.add(String.format("%sevent_type_sort%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEventTypeSort()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `video_stream` to the URL query string
+    if (getVideoStream() != null) {
+      try {
+        joiner.add(String.format("%svideo_stream%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVideoStream()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
