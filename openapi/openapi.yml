@@ -131,6 +131,12 @@ paths:
             enum: [ 'Y', 'N' ]
             maxLength: 1
           description: 'Y = session is active, N = session is deactivated and hidden'
+        - name: video_stream
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Livestream url (url is not validated!). Undocumented'
         - name: custom_fields
           in: query
           schema:
@@ -251,6 +257,12 @@ paths:
             enum: [ 'Y', 'N' ]
             maxLength: 1
           description: 'Y = session is active, N = session is deactivated and hidden'
+        - name: video_stream
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Livestream url (url is not validated!). Undocumented'
       responses:
         '200':
           description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
@@ -777,6 +789,9 @@ components:
         event_type_sort:
           type: string
           description: 'Numeric string'
+        video_stream:
+          type: string
+          description: 'Livestream url (url is not validated!). Undocumented'
     ExportSpeaker:
       type: object
       readOnly: true

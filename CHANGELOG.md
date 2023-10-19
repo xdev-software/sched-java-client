@@ -1,3 +1,9 @@
+# 1.1.0
+* Add undocumented ``video_stream`` field for sessions.<br/>Affected endpoints are:
+  * ``/session/add``
+  * ``/session/mod``
+  * ``/session/export``
+
 # 1.0.2
 * Add all available fields to model returned by ``/user/list``
 * Updated dependencies
