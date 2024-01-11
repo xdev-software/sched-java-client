@@ -46,7 +46,7 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
 * User
   * List ✔️
   * Add ✔️
-  * Modify
+  * Modify ✔️
   * Get
   * Active
   * Avatar
