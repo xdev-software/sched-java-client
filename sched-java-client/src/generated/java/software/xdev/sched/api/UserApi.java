@@ -244,4 +244,122 @@ public class UserApi {
     );
   }
 
+  /**
+   * 
+   * 
+   * @param id User&#39;s unique ID. NOTE: As of Jan 2024 this field has no function and is ignored. Look up needs to be done via \&quot;username\&quot; (optional)
+   * @param username Username of the user to be modified; Allowed: alphanumerics, period, underscore (optional)
+   * @param email  (optional)
+   * @param password User&#39;s password. Use if you want to modify user&#39;s password. If changing username, password is required. (optional)
+   * @param phone  (optional)
+   * @param privacy Default is 1 (on), Set to 0 (off) (optional)
+   * @param role Currently one of the following: attendee, speaker, artist, sponsor, exhibitor (optional)
+   * @param sessions Comma separated string of session id&#39;s which the user will be connected to. Sessions connected to user under his \&quot;role\&quot;. If role is anything but \&quot;attendee\&quot;, modifying user&#39;s connected sessions will overwrite existing connections. If role is \&quot;attendee\&quot;, it will add specified sessions on top of existing ones. (optional)
+   * @param fullName  (optional)
+   * @param about Short bio/description. Some HTML allowed (a,b,br,i,em,strong) (optional)
+   * @param avatar Publicly accessible, not shortened URL to gif, jpg or png image. Images are copied and resized on our server (optional)
+   * @param location  (optional)
+   * @param company  (optional)
+   * @param position  (optional)
+   * @param booth Exhibitor booth (applies only to users with the role set to \&quot;exhibitor\&quot;) (optional)
+   * @param sendEmail Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user (optional)
+   * @param tags A comma separated list of tags to add to the user (optional)
+   * @return String
+   * @throws ApiException if fails to make API call
+   */
+  public String modifyUser(String id, String username, String email, String password, String phone, String privacy, String role, String sessions, String fullName, String about, URI avatar, String location, String company, String position, String booth, String sendEmail, String tags) throws ApiException {
+    return this.modifyUser(id, username, email, password, phone, privacy, role, sessions, fullName, about, avatar, location, company, position, booth, sendEmail, tags, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * 
+   * @param id User&#39;s unique ID. NOTE: As of Jan 2024 this field has no function and is ignored. Look up needs to be done via \&quot;username\&quot; (optional)
+   * @param username Username of the user to be modified; Allowed: alphanumerics, period, underscore (optional)
+   * @param email  (optional)
+   * @param password User&#39;s password. Use if you want to modify user&#39;s password. If changing username, password is required. (optional)
+   * @param phone  (optional)
+   * @param privacy Default is 1 (on), Set to 0 (off) (optional)
+   * @param role Currently one of the following: attendee, speaker, artist, sponsor, exhibitor (optional)
+   * @param sessions Comma separated string of session id&#39;s which the user will be connected to. Sessions connected to user under his \&quot;role\&quot;. If role is anything but \&quot;attendee\&quot;, modifying user&#39;s connected sessions will overwrite existing connections. If role is \&quot;attendee\&quot;, it will add specified sessions on top of existing ones. (optional)
+   * @param fullName  (optional)
+   * @param about Short bio/description. Some HTML allowed (a,b,br,i,em,strong) (optional)
+   * @param avatar Publicly accessible, not shortened URL to gif, jpg or png image. Images are copied and resized on our server (optional)
+   * @param location  (optional)
+   * @param company  (optional)
+   * @param position  (optional)
+   * @param booth Exhibitor booth (applies only to users with the role set to \&quot;exhibitor\&quot;) (optional)
+   * @param sendEmail Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user (optional)
+   * @param tags A comma separated list of tags to add to the user (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return String
+   * @throws ApiException if fails to make API call
+   */
+  public String modifyUser(String id, String username, String email, String password, String phone, String privacy, String role, String sessions, String fullName, String about, URI avatar, String location, String company, String position, String booth, String sendEmail, String tags, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/api/user/mod";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("id", id));
+    localVarQueryParams.addAll(apiClient.parameterToPair("username", username));
+    localVarQueryParams.addAll(apiClient.parameterToPair("email", email));
+    localVarQueryParams.addAll(apiClient.parameterToPair("password", password));
+    localVarQueryParams.addAll(apiClient.parameterToPair("phone", phone));
+    localVarQueryParams.addAll(apiClient.parameterToPair("privacy", privacy));
+    localVarQueryParams.addAll(apiClient.parameterToPair("role", role));
+    localVarQueryParams.addAll(apiClient.parameterToPair("sessions", sessions));
+    localVarQueryParams.addAll(apiClient.parameterToPair("full_name", fullName));
+    localVarQueryParams.addAll(apiClient.parameterToPair("about", about));
+    localVarQueryParams.addAll(apiClient.parameterToPair("avatar", avatar));
+    localVarQueryParams.addAll(apiClient.parameterToPair("location", location));
+    localVarQueryParams.addAll(apiClient.parameterToPair("company", company));
+    localVarQueryParams.addAll(apiClient.parameterToPair("position", position));
+    localVarQueryParams.addAll(apiClient.parameterToPair("booth", booth));
+    localVarQueryParams.addAll(apiClient.parameterToPair("send_email", sendEmail));
+    localVarQueryParams.addAll(apiClient.parameterToPair("tags", tags));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "text/html"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+
+    TypeReference<String> localVarReturnType = new TypeReference<String>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
 }

@@ -1,3 +1,7 @@
+# 1.2.0
+* Add support for the ``/user/mod`` Sched API endpoint
+* Updated dependencies
+
 # 1.1.1
 * Removed unused dependency ``com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider``
 

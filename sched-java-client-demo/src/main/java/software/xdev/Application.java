@@ -93,6 +93,27 @@ public final class Application
 		testUser = userAdded.getUsername();
 		LOG.info("Added user: {}", userAdded);
 		
+		userApi.modifyUser(
+			userAdded.getId(),
+			userAdded.getUsername(),
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			"Does some integration testing with the API - Also the user/mod endpoint works",
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null
+		);
+		LOG.info("Modified user");
+		
 		LOG.info("=== USER: LIST ===");
 		final List<User> users = userApi.listUsers("json", null);
 		LOG.info("Users: {}", users);
