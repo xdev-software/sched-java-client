@@ -6,13 +6,13 @@
 # <img src="https://i0.wp.com/sched.com/wp-content/uploads/2021/11/cropped-favicon.png?fit=28,28&ssl=1" height="28" /> [sched](https://sched.com/)-java-client
 Java client for the [Sched API](https://sched.com/api)
 
-> **Note**
-> A API-Key is required for using the API.<br/>
+> [!IMPORTANT]
+> An API-Key is required for using the API.<br/>
 > You can get a key - if you have a payed plan - at https://insertYourConferenceHERE.sched.com/editor/exports/api
 
 This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``](./openapi/openapi.yml) using [OpenAPI Generator](https://openapi-generator.tech/).
 
-> **Note**
+> [!NOTE]
 > The client may look/behave odd because the Sched API violates some well established standards.
 > <details><summary>List of violations</summary>
 > 
@@ -46,7 +46,7 @@ This client [is generated](./sched-java-client/pom.xml) from an [``openapi.yml``
 * User
   * List ✔️
   * Add ✔️
-  * Modify
+  * Modify ✔️
   * Get
   * Active
   * Avatar

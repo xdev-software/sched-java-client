@@ -556,6 +556,124 @@ paths:
               schema:
                 type: string
       deprecated: false
+  /api/user/mod:
+    post:
+      tags:
+        - "user"
+      operationId: modifyUser
+      security:
+        - ApiKeyAuth: [ ]
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+          example: "123456"
+          description: "User's unique ID. NOTE: As of Jan 2024 this field has no function and is ignored. Look up needs to be done via \"username\""
+        - name: username
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+          example: Testuser
+          description: 'Username of the user to be modified; Allowed: alphanumerics, period, underscore'
+        - name: email
+          in: query
+          schema:
+            type: string
+            maxLength: 80
+          example: testuser@example.org
+        - name: password
+          in: query
+          schema:
+            type: string
+            maxLength: 32
+          description: "User's password. Use if you want to modify user's password. If changing username, password is required."
+        - name: phone
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+        - name: privacy
+          in: query
+          schema:
+            type: string
+            enum: [ '1', '0' ]
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off)'
+        - name: role
+          in: query
+          schema:
+            type: string
+            maxLength: 10
+          description: 'Currently one of the following: attendee, speaker, artist, sponsor, exhibitor'
+        - name: sessions
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: "Comma separated string of session id's which the user will be connected to. Sessions connected to user under his \"role\". If role is anything but \"attendee\", modifying user's connected sessions will overwrite existing connections. If role is \"attendee\", it will add specified sessions on top of existing ones."
+        - name: full_name
+          in: query
+          schema:
+            type: string
+            maxLength: 120
+        - name: about
+          in: query
+          schema:
+            type: string
+            maxLength: 8192
+          description: 'Short bio/description. Some HTML allowed (a,b,br,i,em,strong)'
+        - name: avatar
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 1024
+          description: 'Publicly accessible, not shortened URL to gif, jpg or png image. Images are copied and resized on our server'
+        - name: location
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: company
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: position
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: booth
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Exhibitor booth (applies only to users with the role set to "exhibitor")'
+        - name: send_email
+          in: query
+          schema:
+            type: string
+            enum: [ '1', '0' ]
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user'
+        - name: tags
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'A comma separated list of tags to add to the user'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
   /api/role/add:
     get:
       tags:
