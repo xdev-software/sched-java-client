@@ -1,3 +1,7 @@
+# 1.2.1
+* ⚠️ GroupId changed from ``com.xdev-software`` to ``software.xdev``
+* Updated dependencies
+
 # 1.2.0
 * Add support for the ``/user/mod`` Sched API endpoint
 * Updated dependencies

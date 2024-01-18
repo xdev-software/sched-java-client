@@ -193,11 +193,16 @@ public final class Application
 	
 	public static class CustomApiClient extends ApiClient
 	{
+		@SuppressWarnings("checkstyle:MagicNumber") // timeout
 		public CustomApiClient(final String apiKey)
 		{
 			this.setApiKey(apiKey);
 			this.setConnectTimeout(30_000);
 			this.setUserAgent("Sched-Java-Client-Demo");
 		}
+	}
+	
+	private Application()
+	{
 	}
 }
