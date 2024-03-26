@@ -45,7 +45,6 @@ import java.util.StringJoiner;
   User.JSON_PROPERTY_POSITION,
   User.JSON_PROPERTY_LOCATION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class User {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
