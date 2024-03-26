@@ -37,7 +37,6 @@ import java.util.StringJoiner;
   UserAdded.JSON_PROPERTY_MODIFIED,
   UserAdded.JSON_PROPERTY_TAGS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserAdded {
   public static final String JSON_PROPERTY_STATUS = "status";
   private String status;

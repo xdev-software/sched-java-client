@@ -49,7 +49,6 @@ import java.util.StringJoiner;
   Session.JSON_PROPERTY_VENUE_ID,
   Session.JSON_PROPERTY_SPEAKERS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Session {
   public static final String JSON_PROPERTY_EVENT_KEY = "event_key";
   private String eventKey;

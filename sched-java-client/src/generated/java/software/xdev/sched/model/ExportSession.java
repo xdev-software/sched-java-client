@@ -51,7 +51,6 @@ import java.util.StringJoiner;
   ExportSession.JSON_PROPERTY_EVENT_TYPE_SORT,
   ExportSession.JSON_PROPERTY_VIDEO_STREAM
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExportSession {
   public static final String JSON_PROPERTY_EVENT_KEY = "event_key";
   private String eventKey;

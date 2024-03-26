@@ -36,7 +36,6 @@ import java.util.StringJoiner;
   ExportSpeaker.JSON_PROPERTY_COMPANY,
   ExportSpeaker.JSON_PROPERTY_CUSTOM_ORDER
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExportSpeaker {
   public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
