@@ -197,7 +197,7 @@ public class ExportSession {
   private String venueId;
 
   public static final String JSON_PROPERTY_SPEAKERS = "speakers";
-  private List<ExportSpeaker> speakers;
+  private List<ExportSpeaker> speakers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EVENT_TYPE_SORT = "event_type_sort";
   private String eventTypeSort;
