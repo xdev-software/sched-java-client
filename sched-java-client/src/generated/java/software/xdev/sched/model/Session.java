@@ -237,7 +237,6 @@ public class Session {
     this.eventKey = eventKey;
   }
 
-
   public Session active(ActiveEnum active) {
     
     this.active = active;
@@ -262,7 +261,6 @@ public class Session {
   public void setActive(ActiveEnum active) {
     this.active = active;
   }
-
 
   public Session pinned(PinnedEnum pinned) {
     
@@ -289,7 +287,6 @@ public class Session {
     this.pinned = pinned;
   }
 
-
   public Session name(String name) {
     
     this.name = name;
@@ -314,7 +311,6 @@ public class Session {
   public void setName(String name) {
     this.name = name;
   }
-
 
   public Session eventStart(String eventStart) {
     
@@ -341,7 +337,6 @@ public class Session {
     this.eventStart = eventStart;
   }
 
-
   public Session eventEnd(String eventEnd) {
     
     this.eventEnd = eventEnd;
@@ -366,7 +361,6 @@ public class Session {
   public void setEventEnd(String eventEnd) {
     this.eventEnd = eventEnd;
   }
-
 
   public Session eventType(String eventType) {
     
@@ -393,7 +387,6 @@ public class Session {
     this.eventType = eventType;
   }
 
-
   public Session description(String description) {
     
     this.description = description;
@@ -418,7 +411,6 @@ public class Session {
   public void setDescription(String description) {
     this.description = description;
   }
-
 
   public Session seats(String seats) {
     
@@ -445,7 +437,6 @@ public class Session {
     this.seats = seats;
   }
 
-
   public Session goers(String goers) {
     
     this.goers = goers;
@@ -470,7 +461,6 @@ public class Session {
   public void setGoers(String goers) {
     this.goers = goers;
   }
-
 
   public Session checkins(String checkins) {
     
@@ -497,7 +487,6 @@ public class Session {
     this.checkins = checkins;
   }
 
-
   public Session inviteOnly(InviteOnlyEnum inviteOnly) {
     
     this.inviteOnly = inviteOnly;
@@ -522,7 +511,6 @@ public class Session {
   public void setInviteOnly(InviteOnlyEnum inviteOnly) {
     this.inviteOnly = inviteOnly;
   }
-
 
   public Session venue(String venue) {
     
@@ -549,7 +537,6 @@ public class Session {
     this.venue = venue;
   }
 
-
   public Session audience(String audience) {
     
     this.audience = audience;
@@ -574,7 +561,6 @@ public class Session {
   public void setAudience(String audience) {
     this.audience = audience;
   }
-
 
   public Session subject(String subject) {
     
@@ -601,7 +587,6 @@ public class Session {
     this.subject = subject;
   }
 
-
   public Session id(String id) {
     
     this.id = id;
@@ -627,7 +612,6 @@ public class Session {
     this.id = id;
   }
 
-
   public Session venueId(String venueId) {
     
     this.venueId = venueId;
@@ -652,7 +636,6 @@ public class Session {
   public void setVenueId(String venueId) {
     this.venueId = venueId;
   }
-
 
   public Session speakers(String speakers) {
     

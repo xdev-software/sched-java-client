@@ -84,7 +84,6 @@ public class UserAdded {
     this.status = status;
   }
 
-
   public UserAdded username(String username) {
     
     this.username = username;
@@ -109,7 +108,6 @@ public class UserAdded {
   public void setUsername(String username) {
     this.username = username;
   }
-
 
   public UserAdded password(String password) {
     
@@ -136,7 +134,6 @@ public class UserAdded {
     this.password = password;
   }
 
-
   public UserAdded id(String id) {
     
     this.id = id;
@@ -162,7 +159,6 @@ public class UserAdded {
     this.id = id;
   }
 
-
   public UserAdded modified(Integer modified) {
     
     this.modified = modified;
@@ -187,7 +183,6 @@ public class UserAdded {
   public void setModified(Integer modified) {
     this.modified = modified;
   }
-
 
   public UserAdded tags(String tags) {
     

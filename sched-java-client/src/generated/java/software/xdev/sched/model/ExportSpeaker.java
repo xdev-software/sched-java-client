@@ -80,7 +80,6 @@ public class ExportSpeaker {
     this.username = username;
   }
 
-
   public ExportSpeaker id(String id) {
     
     this.id = id;
@@ -105,7 +104,6 @@ public class ExportSpeaker {
   public void setId(String id) {
     this.id = id;
   }
-
 
   public ExportSpeaker name(String name) {
     
@@ -132,7 +130,6 @@ public class ExportSpeaker {
     this.name = name;
   }
 
-
   public ExportSpeaker company(String company) {
     
     this.company = company;
@@ -157,7 +154,6 @@ public class ExportSpeaker {
   public void setCompany(String company) {
     this.company = company;
   }
-
 
   public ExportSpeaker customOrder(Integer customOrder) {
     

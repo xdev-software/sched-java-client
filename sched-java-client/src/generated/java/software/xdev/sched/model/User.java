@@ -113,7 +113,6 @@ public class User {
     this.id = id;
   }
 
-
   public User username(String username) {
     
     this.username = username;
@@ -138,7 +137,6 @@ public class User {
   public void setUsername(String username) {
     this.username = username;
   }
-
 
   public User name(String name) {
     
@@ -165,7 +163,6 @@ public class User {
     this.name = name;
   }
 
-
   public User phone(String phone) {
     
     this.phone = phone;
@@ -190,7 +187,6 @@ public class User {
   public void setPhone(String phone) {
     this.phone = phone;
   }
-
 
   public User email(String email) {
     
@@ -217,7 +213,6 @@ public class User {
     this.email = email;
   }
 
-
   public User about(String about) {
     
     this.about = about;
@@ -242,7 +237,6 @@ public class User {
   public void setAbout(String about) {
     this.about = about;
   }
-
 
   public User role(String role) {
     
@@ -269,7 +263,6 @@ public class User {
     this.role = role;
   }
 
-
   public User joined(String joined) {
     
     this.joined = joined;
@@ -294,7 +287,6 @@ public class User {
   public void setJoined(String joined) {
     this.joined = joined;
   }
-
 
   public User lastactive(String lastactive) {
     
@@ -321,7 +313,6 @@ public class User {
     this.lastactive = lastactive;
   }
 
-
   public User avatar(URI avatar) {
     
     this.avatar = avatar;
@@ -346,7 +337,6 @@ public class User {
   public void setAvatar(URI avatar) {
     this.avatar = avatar;
   }
-
 
   public User company(String company) {
     
@@ -373,7 +363,6 @@ public class User {
     this.company = company;
   }
 
-
   public User position(String position) {
     
     this.position = position;
@@ -398,7 +387,6 @@ public class User {
   public void setPosition(String position) {
     this.position = position;
   }
-
 
   public User location(String location) {
     

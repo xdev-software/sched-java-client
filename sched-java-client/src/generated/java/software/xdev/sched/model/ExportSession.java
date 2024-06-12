@@ -233,7 +233,6 @@ public class ExportSession {
     this.eventKey = eventKey;
   }
 
-
   public ExportSession active(ActiveEnum active) {
     
     this.active = active;
@@ -258,7 +257,6 @@ public class ExportSession {
   public void setActive(ActiveEnum active) {
     this.active = active;
   }
-
 
   public ExportSession pinned(PinnedEnum pinned) {
     
@@ -285,7 +283,6 @@ public class ExportSession {
     this.pinned = pinned;
   }
 
-
   public ExportSession name(String name) {
     
     this.name = name;
@@ -310,7 +307,6 @@ public class ExportSession {
   public void setName(String name) {
     this.name = name;
   }
-
 
   public ExportSession eventStart(String eventStart) {
     
@@ -337,7 +333,6 @@ public class ExportSession {
     this.eventStart = eventStart;
   }
 
-
   public ExportSession eventEnd(String eventEnd) {
     
     this.eventEnd = eventEnd;
@@ -362,7 +357,6 @@ public class ExportSession {
   public void setEventEnd(String eventEnd) {
     this.eventEnd = eventEnd;
   }
-
 
   public ExportSession eventType(String eventType) {
     
@@ -389,7 +383,6 @@ public class ExportSession {
     this.eventType = eventType;
   }
 
-
   public ExportSession seats(String seats) {
     
     this.seats = seats;
@@ -414,7 +407,6 @@ public class ExportSession {
   public void setSeats(String seats) {
     this.seats = seats;
   }
-
 
   public ExportSession goers(String goers) {
     
@@ -441,7 +433,6 @@ public class ExportSession {
     this.goers = goers;
   }
 
-
   public ExportSession inviteOnly(InviteOnlyEnum inviteOnly) {
     
     this.inviteOnly = inviteOnly;
@@ -466,7 +457,6 @@ public class ExportSession {
   public void setInviteOnly(InviteOnlyEnum inviteOnly) {
     this.inviteOnly = inviteOnly;
   }
-
 
   public ExportSession venue(String venue) {
     
@@ -493,7 +483,6 @@ public class ExportSession {
     this.venue = venue;
   }
 
-
   public ExportSession id(String id) {
     
     this.id = id;
@@ -519,7 +508,6 @@ public class ExportSession {
     this.id = id;
   }
 
-
   public ExportSession venueId(String venueId) {
     
     this.venueId = venueId;
@@ -544,7 +532,6 @@ public class ExportSession {
   public void setVenueId(String venueId) {
     this.venueId = venueId;
   }
-
 
   public ExportSession speakers(List<ExportSpeaker> speakers) {
     
@@ -579,7 +566,6 @@ public class ExportSession {
     this.speakers = speakers;
   }
 
-
   public ExportSession eventTypeSort(String eventTypeSort) {
     
     this.eventTypeSort = eventTypeSort;
@@ -604,7 +590,6 @@ public class ExportSession {
   public void setEventTypeSort(String eventTypeSort) {
     this.eventTypeSort = eventTypeSort;
   }
-
 
   public ExportSession videoStream(String videoStream) {
     
