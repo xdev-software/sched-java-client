@@ -1,1 +1,927 @@
-
+openapi: 3.0.1
+info:
+  title: Sched REST API
+  description: Sched REST API documentation by XDEV Software
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '2.0'
+externalDocs:
+  description: Sched's API documentation
+  url: https://sched.com/api
+servers:
+  - url: https://{conference}.sched.com
+    variables:
+      conference:
+        default: xdevtest1
+        description: Conference
+tags:
+  - name: session
+  - name: user
+  - name: role
+paths:
+  /api/session/add:
+    post:
+      tags:
+        - "session"
+      operationId: addSession
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: session_key
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 32
+          example: 'TEST-123'
+          description: 'Must be a unique alpha-numeric string. E.g.: 123, PANEL4, ST45K etc.'
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 120
+          example: 'TestSession123'
+        - name: session_start
+          in: query
+          required: true
+          schema:
+            type: string
+            # format: date-time - NOT VALID RFC 3339 DATE!
+            maxLength: 40
+          example: '2030-01-02 12:00'
+          description: 'Full date + time for start of session Format: YYYY-MM-DD HH:MM'
+        - name: session_end
+          in: query
+          required: true
+          schema:
+            type: string
+            # format: date-time - NOT VALID RFC 3339 DATE!
+            maxLength: 40
+          example: '2030-01-02 14:00'
+          description: 'Full date + time for end of session Format: YYYY-MM-DD HH:MM'
+        - name: session_type
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 32
+          example: 'keynote'
+          description: 'Used to filter sessions'
+        - name: session_subtype
+          in: query
+          schema:
+            type: string
+            maxLength: 32
+          description: 'For additional filter/organizing sessions'
+        - name: description
+          in: query
+          schema:
+            type: string
+          description: 'Detailed description of the session. Links (HTML Tag \<a>) allowed. Max Size: 8kb'
+        - name: media_url
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 250
+          description: 'URL for media: audio/video/documents. Must use HTTPS.'
+        - name: venue
+          in: query
+          schema:
+            type: string
+            maxLength: 80
+          description: 'Building name / Company name etc.'
+        - name: address
+          in: query
+          schema:
+            type: string
+            maxLength: 250
+          description: 'Room # / Street Address'
+        - name: tags
+          in: query
+          schema:
+            type: string
+            maxLength: 250
+          description: 'Comma-separated words and phrases'
+        - name: seats
+          in: query
+          schema:
+            type: string
+            maxLength: 250
+          description: 'Venue capacity - number of available seats'
+        - name: rsvp_url
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 1024
+          description: 'URL used for Custom Button'
+        - name: ticket_message
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Custom ticket upgrade message, displayed when attendee attempts to add the session without the correct ticket (accepts basic HTML)'
+        - name: active
+          in: query
+          schema:
+            type: string
+            enum: [ 'Y', 'N' ]
+            maxLength: 1
+          description: 'Y = session is active, N = session is deactivated and hidden'
+        - name: video_stream
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Livestream url (url is not validated!). Undocumented'
+        - name: custom_fields
+          in: query
+          schema:
+            type: object
+          description: 'To add custom named fields, just add your field names and their values'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/session/mod:
+    post:
+      tags:
+        - "session"
+      operationId: modifySession
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: session_key
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 32
+          example: 'TEST-123'
+          description: 'Must be a unique alpha-numeric string. E.g.: 123, PANEL4, ST45K etc.'
+        - name: name
+          in: query
+          schema:
+            type: string
+            maxLength: 120
+          example: 'TestSession123'
+        - name: session_start
+          in: query
+          schema:
+            type: string
+            # format: date-time - NOT VALID RFC 3339 DATE!
+            maxLength: 40
+          example: '2030-01-02 12:00'
+          description: 'Full date + time for start of session Format: YYYY-MM-DD HH:MM'
+        - name: session_end
+          in: query
+          schema:
+            type: string
+            # format: date-time - NOT VALID RFC 3339 DATE!
+            maxLength: 40
+          example: '2030-01-02 14:00'
+          description: 'Full date + time for end of session Format: YYYY-MM-DD HH:MM'
+        - name: session_type
+          in: query
+          schema:
+            type: string
+            maxLength: 32
+          example: 'keynote'
+          description: 'Used to filter sessions'
+        - name: session_subtype
+          in: query
+          schema:
+            type: string
+            maxLength: 32
+          description: 'For additional filter/organizing sessions'
+        - name: description
+          in: query
+          schema:
+            type: string
+          description: 'Detailed description of the session. Links (HTML Tag \<a>) allowed. Max Size: 8kb'
+        - name: media_url
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 250
+          description: 'URL for media: audio/video/documents. Must use HTTPS.'
+        - name: venue
+          in: query
+          schema:
+            type: string
+            maxLength: 80
+          description: 'Building name / Company name etc.'
+        - name: address
+          in: query
+          schema:
+            type: string
+            maxLength: 250
+          description: 'Room # / Street Address'
+        - name: tags
+          in: query
+          schema:
+            type: string
+            maxLength: 250
+          description: 'Comma-separated words and phrases'
+        - name: seats
+          in: query
+          schema:
+            type: string
+            maxLength: 250
+          description: 'Venue capacity - number of available seats'
+        - name: rsvp_url
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 1024
+          description: 'URL used for Custom Button'
+        - name: ticket_message
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Custom ticket upgrade message, displayed when attendee attempts to add the session without the correct ticket (accepts basic HTML)'
+        - name: active
+          in: query
+          schema:
+            type: string
+            enum: [ 'Y', 'N' ]
+            maxLength: 1
+          description: 'Y = session is active, N = session is deactivated and hidden'
+        - name: video_stream
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Livestream url (url is not validated!). Undocumented'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/session/del:
+    get:
+      tags:
+        - "session"
+      operationId: deleteSession
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: session_key
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 32
+          example: 'TEST-123'
+          description: 'Must be a unique alpha-numeric string. E.g.: 123, PANEL4, ST45K etc.'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/session/list:
+    get:
+      tags:
+        - "session"
+      operationId: listSessions
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: since
+          in: query
+          schema:
+            type: integer
+            format: int32
+          description: 'Retrieve sessions modified since timestamp (Unix epoch time)'
+        - name: format
+          in: query
+          schema:
+            type: string
+            default: 'json'
+        - name: status
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+          description: 'Set to "del" to fetch only references to deleted sessions'
+        - name: custom_data
+          in: query
+          schema:
+            type: string
+            enum: ['Y']
+            maxLength: 1
+          description: 'Include this parameter with value "Y" if you have custom added fields. Note that spaces in field name will be replaced by underscores.'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/session/export:
+    get:
+      tags:
+        - "session"
+      operationId: exportSessions
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: since
+          in: query
+          schema:
+            type: integer
+            format: int32
+          description: 'Retrieve sessions modified since timestamp (Unix epoch time)'
+        - name: format
+          in: query
+          schema:
+            type: string
+          example: 'json'
+          description: 'One of "csv", "xml", "json", "xls" (returns xlsx-File). Defaults to "csv"'
+        - name: fields
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Comma separated list of fields wanted. Select the order of needed fields by listing them here. Leave blank to get all available fields.'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: 'To page results, provide a page number. Omit to get all sessions'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: 'Number of sessions per page. Defaults to 1000'
+        - name: strip_html
+          in: query
+          schema:
+            type: string
+            enum: ['Y']
+            maxLength: 1
+          description: 'Remove HTML tags from description. Include this parameter with value "Y"'
+        - name: custom_data
+          in: query
+          schema:
+            type: string
+            enum: ['Y']
+            maxLength: 1
+          description: 'Include this parameter with value "Y" if you have custom added fields. Note that spaces in field name will be replaced by underscores.'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExportSession'
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/user/list:
+    get:
+      tags:
+        - "user"
+      operationId: listUsers
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: format
+          in: query
+          schema:
+            type: string
+            default: 'json'
+        - name: fields
+          in: query
+          schema:
+            type: string
+            maxLength: 512
+          description: 'Comma separated list of fields. Default: username, name, phone, email, joined, lastactive, avatar, company, position, location. Available fields: id, username, name, phone, email, url, about, role, joined, lastactive, avatar, company, position, location'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/user/add:
+    post:
+      tags:
+        - "user"
+      operationId: addUser
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: username
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+          example: Testuser
+          description: 'Required when email is not set; Allowed: alphanumerics, period, underscore'
+        - name: email
+          in: query
+          schema:
+            type: string
+            maxLength: 80
+          example: testuser@example.org
+          description: 'Required when username is not set'
+        - name: password
+          in: query
+          schema:
+            type: string
+            maxLength: 32
+          description: "User's desired password. Optional. Random password will be generated if none provided."
+        - name: phone
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+        - name: privacy
+          in: query
+          schema:
+            type: string
+            enum: ['1', '0']
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off)'
+        - name: role
+          in: query
+          schema:
+            type: string
+            maxLength: 10
+          description: 'Currently one of the following: attendee, speaker, artist, sponsor, exhibitor'
+        - name: sessions
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: "Comma separated string of session id's which the user will be connected to"
+        - name: full_name
+          in: query
+          schema:
+            type: string
+            maxLength: 120
+        - name: about
+          in: query
+          schema:
+            type: string
+            maxLength: 8192
+          description: 'Short bio/description. Some HTML allowed (a,b,br,i,em,strong)'
+        - name: avatar
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 1024
+          description: 'Publicly accessible, not shortened URL to gif, jpg or png image. Images are copied and resized on our server'
+        - name: location
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: company
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: position
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: booth
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Exhibitor booth (applies only to users with the role set to "exhibitor")'
+        - name: send_email
+          in: query
+          schema:
+            type: string
+            enum: ['1', '0']
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user'
+        - name: tags
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'A comma separated list of tags to add to the user'
+        - name: legacy_api
+          in: query
+          schema:
+            type: string
+            enum: ['y']
+          description: 'Undocumented. Needed to link existing accounts with this email'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; text-Responses usually indicate an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAdded'
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/user/mod:
+    post:
+      tags:
+        - "user"
+      operationId: modifyUser
+      security:
+        - ApiKeyAuth: [ ]
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+          example: "123456"
+          description: "User's unique ID. NOTE: As of Jan 2024 this field has no function and is ignored. Look up needs to be done via \"username\""
+        - name: username
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+          example: Testuser
+          description: 'Username of the user to be modified; Allowed: alphanumerics, period, underscore'
+        - name: email
+          in: query
+          schema:
+            type: string
+            maxLength: 80
+          example: testuser@example.org
+        - name: password
+          in: query
+          schema:
+            type: string
+            maxLength: 32
+          description: "User's password. Use if you want to modify user's password. If changing username, password is required."
+        - name: phone
+          in: query
+          schema:
+            type: string
+            maxLength: 40
+        - name: privacy
+          in: query
+          schema:
+            type: string
+            enum: [ '1', '0' ]
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off)'
+        - name: role
+          in: query
+          schema:
+            type: string
+            maxLength: 10
+          description: 'Currently one of the following: attendee, speaker, artist, sponsor, exhibitor'
+        - name: sessions
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: "Comma separated string of session id's which the user will be connected to. Sessions connected to user under his \"role\". If role is anything but \"attendee\", modifying user's connected sessions will overwrite existing connections. If role is \"attendee\", it will add specified sessions on top of existing ones."
+        - name: full_name
+          in: query
+          schema:
+            type: string
+            maxLength: 120
+        - name: about
+          in: query
+          schema:
+            type: string
+            maxLength: 8192
+          description: 'Short bio/description. Some HTML allowed (a,b,br,i,em,strong)'
+        - name: avatar
+          in: query
+          schema:
+            type: string
+            format: uri
+            maxLength: 1024
+          description: 'Publicly accessible, not shortened URL to gif, jpg or png image. Images are copied and resized on our server'
+        - name: location
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: company
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: position
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+        - name: booth
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'Exhibitor booth (applies only to users with the role set to "exhibitor")'
+        - name: send_email
+          in: query
+          schema:
+            type: string
+            enum: [ '1', '0' ]
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user'
+        - name: tags
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: 'A comma separated list of tags to add to the user'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/role/add:
+    get:
+      tags:
+        - "role"
+      operationId: addRole
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 40
+          example: 'TestUser'
+        - name: role
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 10
+          description: 'Currently one of the following: attendee, speaker, artist, sponsor, exhibitor'
+        - name: sessions
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: "Comma separated string of session id's which the user will be connected to"
+        - name: send_email
+          in: query
+          schema:
+            type: string
+            enum: ['1', '0']
+            maxLength: 1
+          description: 'Default is 1 (on), Set to 0 (off). Whether to send e-mail with login credentials to user'
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+  /api/role/del:
+    get:
+      tags:
+        - "role"
+      operationId: deleteRole
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 40
+          example: 'TestUser'
+        - name: role
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 10
+          description: 'Currently one of the following: attendee, speaker, artist, sponsor, exhibitor'
+        - name: sessions
+          in: query
+          schema:
+            type: string
+            maxLength: 1024
+          description: "Comma separated string of session id's which the user will be disconnected from. If no sessions provided, the user will be disconnected from all sessions associated with given role"
+      responses:
+        '200':
+          description: Returned if the request was processed - no matter if it was successful or not; OK when successful; other text-Responses usually indicate an error
+          content:
+            text/html:
+              schema:
+                type: string
+      deprecated: false
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+  schemas:
+    User:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        about:
+          type: string
+        role:
+          type: string
+          description: 'Comma separated list of roles'
+        joined:
+          type: string
+          # format: date-time - NOT VALID RFC 3339 DATE!
+        lastactive:
+          type: string
+          # format: date-time - NOT VALID RFC 3339 DATE!
+        avatar:
+          type: string
+          format: uri
+        company:
+          type: string
+        position:
+          type: string
+        location:
+          type: string
+    UserAdded:
+      type: object
+      readOnly: true
+      properties:
+        status:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+          description: 'Only returned when the user is created'
+        id:
+          type: string
+        modified:
+          type: integer
+        tags:
+          type: string
+    Session:
+      type: object
+      readOnly: true
+      properties:
+        event_key:
+          type: string
+        active:
+          type: string
+          enum: ['Y', 'N']
+        pinned:
+          type: string
+          enum: ['Y', 'N']
+        name:
+          type: string
+        event_start:
+          type: string
+          # format: date-time - NOT VALID RFC 3339 DATE!
+        event_end:
+          type: string
+          # format: date-time - NOT VALID RFC 3339 DATE!
+        event_type:
+          type: string
+        description:
+          type: string
+        seats:
+          type: string
+          description: 'Number of seats... as string'
+        goers:
+          type: string
+          description: 'Number of goers... as string'
+        checkins:
+          type: string
+          description: 'Number of check-ins... as string'
+        invite_only:
+          type: string
+          enum: ['Y', 'N']
+        venue:
+          type: string
+        audience:
+          type: string
+        subject:
+          type: string
+        id:
+          type: string
+          description: 'A hexadecimal string'
+        venue_id:
+          type: string
+        speakers:
+          type: string
+          description: 'Comma separated list of speakers'
+    ExportSession:
+      type: object
+      readOnly: true
+      properties:
+        event_key:
+          type: string
+        active:
+          type: string
+          enum: ['Y', 'N']
+        pinned:
+          type: string
+          enum: ['Y', 'N']
+        name:
+          type: string
+        event_start:
+          type: string
+          # format: date-time - NOT VALID RFC 3339 DATE!
+        event_end:
+          type: string
+          # format: date-time - NOT VALID RFC 3339 DATE!
+        event_type:
+          type: string
+        seats:
+          type: string
+          description: 'Number of seats... as string'
+        goers:
+          type: string
+          description: 'Number of goers... as string'
+        invite_only:
+          type: string
+          enum: ['Y', 'N']
+        venue:
+          type: string
+        id:
+          type: string
+          description: 'A hexadecimal string'
+        venue_id:
+          type: string
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportSpeaker'
+        # Ommited all date components fields as the can be acquired using event_start or event_end
+        event_type_sort:
+          type: string
+          description: 'Numeric string'
+        video_stream:
+          type: string
+          description: 'Livestream url (url is not validated!). Undocumented'
+    ExportSpeaker:
+      type: object
+      readOnly: true
+      properties:
+        username:
+          type: string
+        id:
+          type: string
+          description: 'Numeric string'
+        name:
+          type: string
+        company:
+          type: string
+        custom_order:
+          type: integer
